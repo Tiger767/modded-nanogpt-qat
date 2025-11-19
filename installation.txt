@@ -1,0 +1,41 @@
+# Installation Instructions for Low-Bit Quantized nanoGPT
+
+This guide provides the necessary steps to clone the repository, set up the environment, install dependencies, and download the required dataset for training and inference.
+
+Prerequisites
+- Linux system (e.g., Ubuntu 24.04)
+- NVIDIA GPU (Project developed on H100, but other CUDA-compatible GPUs with 9 or above capability should work)
+- NVIDIA Driver and CUDA 12.8 or later
+
+1. Clone Repository and Setup Virtual Environment
+
+# Clone the repository
+git clone [https://github.com/Tiger767/modded-nanogpt-lowbit.git](https://github.com/Tiger767/modded-nanogpt-lowbit.git)
+cd modded-nanogpt-lowbit
+
+# Create and activate a Python virtual environment
+python3 -m venv venv
+source venv/bin/activate
+
+
+2. Install Dependencies and PyTorch
+
+This project requires specific dependency versions, including a recent version of PyTorch compatible with CUDA 12.8 for optimal performance on modern hardware.
+
+# Install core dependencies from requirements.txt
+pip install -r requirements.txt
+
+# Uninstall any existing PyTorch installation
+sudo pip uninstall torch
+
+# Install PyTorch built for CUDA 12.8
+# NOTE: This ensures FlashAttention and other kernels run correctly.
+pip install torch --index-url [https://download.pytorch.org/whl/cu128](https://download.pytorch.org/whl/cu128)
+
+
+3. Prepare Dataset
+
+The project uses a subset of the FineWeb 10 Billion token corpus. The following command downloads and prepares the necessary data files into the data/ directory.
+
+# Download and cache the first 900 million tokens of the FineWeb dataset
+python data/cached_fineweb10B.py 9
