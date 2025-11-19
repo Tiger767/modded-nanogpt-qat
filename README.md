@@ -6,6 +6,8 @@
 
 This repository implements a comparative study of the [modded-nanogpt project](https://github.com/KellerJordan/modded-nanogpt/tree/master) against various low-bit quantized models, inspired by BitNet's ternary ($W_{1.58}$) quantization. The project focuses on isolating the effects of weight-only quantization versus combined weight-and-activation quantization on training stability, convergence, and final validation loss.
 
+[View Full Report](latex/NanoGPT_QAT.pdf)
+
 ## Project Structure and Key Files
 
 | File/Folder | Description |
